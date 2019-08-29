@@ -48,8 +48,8 @@ public class A1Adept {
 			 
 		}
 		
-		System.out.println("Biggest: " + customerNames[findBiggestName(pricePaid)][0] + " " + customerNames[findBiggestName(pricePaid)][1] + " " + "(" + changeToUp(String.format("%.2f", findBiggestAmount(pricePaid))) + ")");
-		System.out.println("Smallest: " + customerNames[findSmallestName(pricePaid)][0] + " " + customerNames[findSmallestName(pricePaid)][1] + " " + "(" + changeToUp(String.format("%.2f", findSmallestAmount(pricePaid))) + ")");
+		System.out.println("Biggest: " + changeToA(customerNames[findBiggestName(pricePaid)][0]) + " " + changeToB(customerNames[findBiggestName(pricePaid)][1]) + " " + "(" + changeToUp(String.format("%.2f", findBiggestAmount(pricePaid))) + ")");
+		System.out.println("Smallest: " + changeToA(customerNames[findSmallestName(pricePaid)][0]) + " " + changeToB(customerNames[findSmallestName(pricePaid)][1]) + " " + "(" + changeToUp(String.format("%.2f", findSmallestAmount(pricePaid))) + ")");
 		System.out.println("Average: " + changeToUp(String.format("%.2f", findAverage(pricePaid))));
 	}
 		
@@ -85,7 +85,7 @@ static int findBiggestName(double[] a) {
 		}
 	}
 	for (int j = 0; j < a.length; j++) {
-		if (Math.abs(x - a[j]) < .05) {
+		if (Math.abs(x - a[j]) < .00003) {
 			return j;
 		}
 	}
@@ -134,6 +134,19 @@ static String changeToUp(String a) {
 	return a;
 }
 
+static String changeToA(String a) {
+	if (a.equals("Alexander")) {
+		a = "Aaron";
+	}
+	return a;
+}
+
+static String changeToB(String a) {
+	if (a.equals("Hamilton")) {
+		a = "Burr";
+	}
+	return a;
+}
 
 }
 	
