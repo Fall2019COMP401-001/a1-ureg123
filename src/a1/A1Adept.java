@@ -48,8 +48,8 @@ public class A1Adept {
 			 
 		}
 		
-		System.out.println("Biggest: " + customerNames[findBiggestName(pricePaid)][0] + " " + customerNames[findBiggestName(pricePaid)][1] + "(" + String.format("%.2f", findBiggestAmount(pricePaid)) + ")");
-		System.out.println("Smallest: " + customerNames[findSmallestName(pricePaid)][0] + " " + customerNames[findSmallestName(pricePaid)][1] + "(" + String.format("%.2f", findSmallestAmount(pricePaid)) + ")");
+		System.out.println("Biggest: " + customerNames[findBiggestName(pricePaid)][0] + " " + customerNames[findBiggestName(pricePaid)][1] + " " + "(" + String.format("%.2f", findBiggestAmount(pricePaid)) + ")");
+		System.out.println("Smallest: " + customerNames[findSmallestName(pricePaid)][0] + " " + customerNames[findSmallestName(pricePaid)][1] + " " + "(" + String.format("%.2f", findSmallestAmount(pricePaid)) + ")");
 		System.out.println("Average: " + String.format("%.2f", findAverage(pricePaid)));
 	}
 		
@@ -121,7 +121,7 @@ static int findSmallestName(double[] a) {
 static double findAverage(double[] a) {
 	double x = 0;
 	for (int i = 0; i < a.length; i++) {
-		x = x + a[0];
+		x = x + a[i];
 	}
 	double average = x / a.length;
 	return average;
