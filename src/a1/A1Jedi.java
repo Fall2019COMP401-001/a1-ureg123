@@ -45,22 +45,32 @@ int count = scan.nextInt();
 			
 			String[][] quantAndNameOfItem = new String[itemsBought][2];
 			double total = 0;
-			for (int j = 0; j < itemsBought; j++) {
+			outer: for (int j = 0; j < itemsBought; j++) {
 				quantAndNameOfItem[j][0] = Integer.toString(scan.nextInt());
 				quantAndNameOfItem[j][1] = scan.next();
 				
+				int local = Integer.parseInt(nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][3]);
+				int z = Integer.parseInt(quantAndNameOfItem[j][0]);
+				local = local + z;
+				nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][3] = Integer.toString(local); 
+				
+				if (j > 0) {
+					for (int l = 0; l < j; l++) {
+						if (quantAndNameOfItem[j][1].equals(quantAndNameOfItem[l][1])) {
+							continue outer;
+						}
+					}
+				} 
 				
 				if (searchArrayBoolean(nameAndPrice, quantAndNameOfItem[j][1])) {
 					int var = Integer.parseInt(nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][2]);
 					var = var + 1;
 					nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][2] = Integer.toString(var);
 				}
-				if (searchArrayBoolean(nameAndPrice, quantAndNameOfItem[j][1])) {
-					int local = Integer.parseInt(nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][3]);
-					int z = Integer.parseInt(quantAndNameOfItem[j][0]);
-					local = local + z;
-					nameAndPrice[searchArrayIndex(nameAndPrice, quantAndNameOfItem[j][1])][3] = Integer.toString(local); 
-				}
+				
+				
+				
+	
 				
 				double price = A1Adept.searchArray(nameAndPrice, quantAndNameOfItem[j][1]);
 				double rev = price * Double.parseDouble(quantAndNameOfItem[j][0]);
@@ -74,7 +84,7 @@ int count = scan.nextInt();
 		}
 		
 		for (int i = 0; i < nameAndPrice.length; i++) {
-			System.out.println(changeToTwo(changeToNo(nameAndPrice[i][2])) + " customers bought" + changeToNothing(nameAndPrice[i][3]) + " " + nameAndPrice[i][0]);
+			System.out.println(changeToNo(nameAndPrice[i][2]) + " customers bought" + changeToNothing(nameAndPrice[i][3]) + " " + nameAndPrice[i][0]);
 		}
 		
 	}
@@ -96,6 +106,9 @@ int count = scan.nextInt();
 		}
 		return false;
 }
+	
+
+	
 	static String changeToNothing(String a) {
 		if (a.equals(" 0")) {
 			return "";
@@ -116,4 +129,5 @@ int count = scan.nextInt();
 		}
 		return a;
 	}
+
 }
