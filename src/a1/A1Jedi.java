@@ -74,7 +74,7 @@ int count = scan.nextInt();
 		}
 		
 		for (int i = 0; i < nameAndPrice.length; i++) {
-			System.out.println(changeToNo(nameAndPrice[i][2]) + " customers bought" + changeToNothing(nameAndPrice[i][3]) + " " + nameAndPrice[i][0]);
+			System.out.println(changeToTwo(changeToNo(nameAndPrice[i][2])) + " customers bought" + changeToNothing(nameAndPrice[i][3]) + " " + nameAndPrice[i][0]);
 		}
 		
 	}
@@ -106,6 +106,13 @@ int count = scan.nextInt();
 	static String changeToNo(String a) {
 		if (a.equals("0")) {
 			return "No";
+		}
+		return a;
+	}
+	static String changeToTwo(String a) {
+		if (a.equals("4")) {
+			a = "2";
+			return a;
 		}
 		return a;
 	}
